@@ -1,0 +1,17 @@
+{
+  "name": "nodeulo",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": ["accumulo", "thrift"],
+  "maintainers": [
+    "Chris O'Neal <o'neal_christopher@bah.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/christopheroneal/nodeulo.git"
+  },
+  "dependencies": {
+    "thrift": "~0.9.1"
+  },
+  "main": "./lib/nodeulo"
+}
