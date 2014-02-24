@@ -10,13 +10,32 @@ A NPM package for Node.js interaction with Accumulo
 
 ## Usage
 
+### Basic Table Operations
 ```javascript
 var nodeulo = require('nodeulo')
+var accumulo = new nodeulo.Accumulo({user: 'root', password: 'password'});
 
-nodeulo.connect('localhost', 42424, 'root', 'password', function() {
-  nodeulo.list_tables(function(err, tables) {
+accumulo.connect(function() {
+  accumulo.listTables(function(err, tables) {
     console.log(tables);
-    nodeulo.close();
+    accumulo.close();
+  });
+});
+```
+
+### Writing and Scanning
+```javascript
+var nodeulo = require('nodeulo')
+var accumulo = new nodeulo.Accumulo({host: 'localhost', port: 12345});
+
+accumulo.connect(function() {
+  var mut = new nodeulo.Mutation('row');
+  mut.put({columnFamily: 'fam', columnQualifier: 'qual', value: 'abcd'});
+  accumulo.write('testtable', [mut], function() {
+    accumulo.scan({table: 'testtable', columns: [{columnFamily: 'fam'}], function(err, results) {
+      console.log(results);
+      accumulo.close();
+    });
   });
 });
 ```
@@ -27,11 +46,13 @@ nodeulo.connect('localhost', 42424, 'root', 'password', function() {
 
 * Initialization
 * Table operations (list, create, rename, delete)
+* Basic scanning
+* Basic writing
 
 ### To Do
 
-* Writing
-* Scanning
+* More advanced writing
+* More advanced scanning
 * Iterators
 * Examples
 * Documentation

@@ -1,6 +1,6 @@
 {
   "name": "nodeulo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node.js interaction with Accumulo via Thrift",
   "keywords": ["accumulo", "thrift"],
   "maintainers": [
