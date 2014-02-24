@@ -1,7 +1,7 @@
 {
   "name": "nodeulo",
   "version": "0.0.2",
-  "description": "",
+  "description": "Node.js interaction with Accumulo via Thrift",
   "keywords": ["accumulo", "thrift"],
   "maintainers": [
     "Chris O'Neal <o'neal_christopher@bah.com>"
