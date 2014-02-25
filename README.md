@@ -48,11 +48,13 @@ accumulo.connect(function() {
 * Table operations (list, create, rename, delete)
 * Basic scanning
 * Basic writing
+* Simple examples
 
 ### To Do
 
 * More advanced writing
 * More advanced scanning
 * Iterators
-* Examples
+* More examples
 * Documentation
+* Tests
