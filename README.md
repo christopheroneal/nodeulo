@@ -1,5 +1,8 @@
 # nodeulo
 
+[![NPM version](https://badge.fury.io/js/nodeulo.png)](http://badge.fury.io/js/nodeulo)
+[![Dependency Status](https://gemnasium.com/christopheroneal/nodeulo.png)](https://gemnasium.com/christopheroneal/nodeulo)
+
 A NPM package for Node.js interaction with Accumulo
 
 ## Requirements
