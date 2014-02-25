@@ -1,4 +1,4 @@
-var nodeulo = require('nodeulo')
+var nodeulo = require('../lib/nodeulo');
 
 // initialize your accumulo object with information about your setup
 var accumulo = new nodeulo.Accumulo({host: 'localhost', port: 12345, user: 'root', password: 'password'});
@@ -17,7 +17,7 @@ accumulo.connect(function() {
             console.log(tables);
             accumulo.close();
           });
-        })'
+        });
       });
     });
   });
