@@ -21,7 +21,11 @@ var accumulo = new nodeulo.Accumulo({user: 'root', password: 'password'});
 accumulo.connect(function() {
   accumulo.listTables(function(err, tables) {
     console.log(tables);
-    accumulo.close();
+    accumulo.createTable('testtable', function() {
+      accumulo.listTables(function(err, newTables) {
+      console.log(newTables);
+      accumulo.close();
+    });
   });
 });
 ```
@@ -57,7 +61,7 @@ accumulo.connect(function() {
   }
   accumulo.write('testtable', muts, function() {
     var filter = new nodeulo.RegExFilter({familyRegex: '.*?0.*?'});
-    var range = new nodeulo.Range({row: '5', include: true}, {row: '15', include: false});
+    var range = new nodeulo.Range({row: 'test', columnFamily: '5', include: true}, {row: 'test', columnFamily: '15', include: false});
     accumulo.scan({table: 'testtable', scanrange: range, iterators: [filter]}, function(err, results) {
       console.log(results);
       accumulo.close();
