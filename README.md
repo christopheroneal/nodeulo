@@ -43,6 +43,29 @@ accumulo.connect(function() {
 });
 ```
 
+### Iterators and Ranges
+```javascript
+var nodeulo = require('nodeulo')
+var accumulo = new nodeulo.Accumulo({});
+
+accumulo.connect(function() {
+  var muts = []
+  for (i = 0 i < 20; i++) {
+    var mut = new nodeulo.Mutation('test');
+    mut.put({columnFamily: i, value: 'value'});
+    muts.push(mut);
+  }
+  accumulo.write('testtable', muts, function() {
+    var filter = new nodeulo.RegExFilter({familyRegex: '.*?0.*?'});
+    var range = new nodeulo.Range({row: '5', include: true}, {row: '15', include: false});
+    accumulo.scan({table: 'testtable', scanrange: range, iterators: [filter]}, function(err, results) {
+      console.log(results);
+      accumulo.close();
+    });
+  });
+});
+```
+
 ## Current Status
 
 ### Functional
@@ -52,12 +75,14 @@ accumulo.connect(function() {
 * Basic scanning
 * Basic writing
 * Simple examples
+* Ranges
+* Basic iterator functionality
 
 ### To Do
 
 * More advanced writing
 * More advanced scanning
-* Iterators
+* More iterators
 * More examples
 * Documentation
 * Tests
