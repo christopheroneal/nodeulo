@@ -23,8 +23,9 @@ accumulo.connect(function() {
     console.log(tables);
     accumulo.createTable('testtable', function() {
       accumulo.listTables(function(err, newTables) {
-      console.log(newTables);
-      accumulo.close();
+        console.log(newTables);
+        accumulo.close();
+      });
     });
   });
 });
